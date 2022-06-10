@@ -1,4 +1,3 @@
-
 package easy_math;
  
 import java.awt.BorderLayout;
@@ -11,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import java.awt.Font;
 
 
 
@@ -30,11 +29,16 @@ public class Easy_Math extends JFrame implements ActionListener
     private JButton botonValidarValor;
     private JButton botonSalir;
     private JLabel etiqueta_x;
+    private JLabel titulo;
+    private JLabel Ecuacion;
+    private JLabel Nivel;
     private JTextField numero_ingresado;
     private JTextField resultado;
    // private Palabras p;
-   
-    
+    private int vidas;
+    private String ecuacion_real = " 5x + 3 = 13 ";
+    private String nivel = " Nivel 1 ";
+    Font fuente = new Font("Dialog", Font.BOLD, 20);
     
     public Easy_Math()
     {
@@ -45,14 +49,32 @@ public class Easy_Math extends JFrame implements ActionListener
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-        
+        vidas = 0;
     }
     
     public void agregarElementos()
     {
-        //Panel donde se dibujara 
+        //Panel donde se mostraran las ecuaciones
         panelGrafico = new Pintar();
         panelGrafico.setBackground(Color.WHITE);
+        panelGrafico.setLayout(null);
+        titulo = new JLabel("Resuelva la Ecuacion Matematica  ");
+        titulo.setForeground(Color.RED);
+        titulo.setFont(fuente);
+        titulo.setBounds(120,10,350,100);
+        panelGrafico.add(titulo);
+        Ecuacion = new JLabel(ecuacion_real);
+        Ecuacion.setForeground(Color.BLUE);
+        Ecuacion.setFont(fuente);
+        Ecuacion.setBounds(200,80,250,100);
+        panelGrafico.add(Ecuacion);
+        Nivel = new JLabel(nivel);
+        Nivel.setForeground(Color.BLACK);
+        Nivel.setFont(fuente);
+        Nivel.setBounds(500,180,250,100);
+        panelGrafico.add(Nivel);
+        
+        
         add(panelGrafico,BorderLayout.CENTER);
         
         //Panel donde estaran los elementos
@@ -66,6 +88,7 @@ public class Easy_Math extends JFrame implements ActionListener
         botonSalir = new JButton("SALIR");
         
         etiqueta_x = new JLabel("X = ");
+        
         
         resultado = new JTextField("");
         numero_ingresado = new JTextField("");
@@ -100,8 +123,6 @@ public class Easy_Math extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent evento) 
     {
         
-       
-
     }
     
     
