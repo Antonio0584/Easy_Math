@@ -3,8 +3,9 @@ package easy_math;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import java.awt.Image;
+
 
 
 /**
@@ -13,8 +14,9 @@ import java.awt.Image;
  */
 public class Pintar extends JPanel{
     
-   
-   
+  
+    private int bandera = 0;
+    
     
     public Pintar()
     {
@@ -23,13 +25,13 @@ public class Pintar extends JPanel{
     }
     
 
-     String titulo = "Ecuacion Matematica";
+     //String titulo = "Ecuacion Matematica";
      
     public void paintComponent(Graphics g)
     {
         
+     
         
-       
         super.paintComponent(g);
         
        
@@ -37,7 +39,7 @@ public class Pintar extends JPanel{
         
         // Dibujar marco 
         g.setColor(Color.BLACK);
-        g.drawString(titulo,100, 30);
+       // g.drawString(titulo,100, 30);
         g.fillRect(0, 250, 600, 5);
         g.fillRect(0, 5, 5, 250);  
         g.fillRect(0, 5, 600, 5);
@@ -46,15 +48,28 @@ public class Pintar extends JPanel{
        
       
         
-        
-        
-        
-       
+        if(bandera == 0)
+        {
+            
+        }
+        if(bandera == 1)
+        {
+         JOptionPane.showMessageDialog(null,"Respuesta Incorrecta , te quedan 2 vidas");
+        }
+        else if(bandera == 2)
+        {
+          JOptionPane.showMessageDialog(null,"Respuesta Incorrecta , te queda 1 vidas");
+        }
+        else if(bandera == 3)
+        {
+          JOptionPane.showMessageDialog(null,"Respuesta Incorrecta , Has perdido");
+        }
+      
     }
     
     public void error(int error)
     {
-        
+        bandera= error;
         this.repaint();
     }
     

@@ -22,6 +22,8 @@ import java.awt.Font;
 public class Easy_Math extends JFrame implements ActionListener
 {
 
+    // Creacion de Botones, Label y cajas de texto
+    
     private Pintar panelGrafico;
     private JPanel panelComponentes;
     private JButton botonReIniciar;
@@ -34,9 +36,8 @@ public class Easy_Math extends JFrame implements ActionListener
     private JLabel Nivel;
     private JTextField numero_ingresado;
     private JTextField resultado;
-   // private Palabras p;
+    private Ecuaciones e;
     private int vidas;
-    private String ecuacion_real = " 5x + 3 = 13 ";
     private String nivel = " Nivel 1 ";
     Font fuente = new Font("Dialog", Font.BOLD, 20);
     
@@ -54,20 +55,30 @@ public class Easy_Math extends JFrame implements ActionListener
     
     public void agregarElementos()
     {
-        //Panel donde se mostraran las ecuaciones
+        /*creacion del panel donde se mostraran las ecuaciones a desarrollar
+        Asiganacion de color y tamano para cada elemento 
+        */
         panelGrafico = new Pintar();
         panelGrafico.setBackground(Color.WHITE);
         panelGrafico.setLayout(null);
+        // titulo es el titulo que se mostrara en este primer panel
+        
         titulo = new JLabel("Resuelva la Ecuacion Matematica  ");
         titulo.setForeground(Color.RED);
         titulo.setFont(fuente);
         titulo.setBounds(120,10,350,100);
         panelGrafico.add(titulo);
-        Ecuacion = new JLabel(ecuacion_real);
+        
+        //Ecuacion sera el label que mostrara en el panel la ecuacion escogida para cada nivel
+        
+        Ecuacion = new JLabel();
         Ecuacion.setForeground(Color.BLUE);
         Ecuacion.setFont(fuente);
         Ecuacion.setBounds(200,80,250,100);
         panelGrafico.add(Ecuacion);
+        
+        //Nivel es un label que nos ira mostrando el nivel en el cual se encuentra el jugador
+        
         Nivel = new JLabel(nivel);
         Nivel.setForeground(Color.BLACK);
         Nivel.setFont(fuente);
@@ -77,7 +88,8 @@ public class Easy_Math extends JFrame implements ActionListener
         
         add(panelGrafico,BorderLayout.CENTER);
         
-        //Panel donde estaran los elementos
+        //Creacion del Panel donde se introduciran los botones label y cajas de texto
+        
         panelComponentes = new JPanel();
         panelComponentes.setBackground(Color.BLUE);
         panelComponentes.setLayout(null);
@@ -93,7 +105,8 @@ public class Easy_Math extends JFrame implements ActionListener
         resultado = new JTextField("");
         numero_ingresado = new JTextField("");
         
-        //Colocando elementos en el panel
+        //Asignacion de la ubicacion de los elementos en el panel
+        
         botonReIniciar.setBounds(30,500,150,30);
         etiqueta_x.setBounds(150,300,100,30);
         resultado.setBounds(200,300,200,30);
@@ -119,10 +132,54 @@ public class Easy_Math extends JFrame implements ActionListener
         
         
     }
+    // Creacion de metodo para las funciones que realizaran los botones
     
     public void actionPerformed(ActionEvent evento) 
     {
         
+        // Acciones a realizar cuando se presione el boton ReIniciar
+        
+        if(evento.getSource() == botonReIniciar)
+        {
+            panelGrafico.error(0);
+            Ecuacion.setText("");
+            vidas = 0;
+        }
+        
+        // Acciones a realizar cuando se presione el boton Iniciar
+        
+        else if(evento.getSource() == botonIniciar)
+        {
+            panelGrafico.error(0);
+            e = new Ecuaciones();
+            String aux = e.escogerPalabra();
+            
+            Ecuacion.setText(aux);
+        }
+        else if(evento.getSource() == botonValidarValor)
+        {
+            int p = 5;
+            int vidas = 3;
+            String valor_insertado = numero_ingresado.getText();
+            int valor_comparar = Integer.parseInt(valor_insertado);;
+            if(valor_comparar==5){
+                JOptionPane.showMessageDialog(null,"Ganaste");
+            }
+            else {
+                
+            JOptionPane.showMessageDialog(null,"perdiste");
+        }
+            
+        }
+        
+         // Acciones a realizar cuando se presione el boton Salir
+        
+        else if(evento.getSource() == botonSalir)
+        {
+            System.exit(0);
+        }
+        
+
     }
     
     
