@@ -1,4 +1,3 @@
-
 package easy_math;
 
 import java.awt.Color;
@@ -74,3 +73,4 @@ public class Pintar extends JPanel{
     }
     
 }
+

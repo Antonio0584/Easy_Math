@@ -37,9 +37,14 @@ public class Easy_Math extends JFrame implements ActionListener
     private JTextField numero_ingresado;
     private JTextField resultado;
     private Ecuaciones e;
+    private Nivel n;
+    private Ecuaciones r;
+    private Ecuaciones restart;
     private int vidas;
     private String nivel = " Nivel 1 ";
     Font fuente = new Font("Dialog", Font.BOLD, 20);
+    
+    private int count =0;
     
     public Easy_Math()
     {
@@ -79,10 +84,10 @@ public class Easy_Math extends JFrame implements ActionListener
         
         //Nivel es un label que nos ira mostrando el nivel en el cual se encuentra el jugador
         
-        Nivel = new JLabel(nivel);
+        Nivel = new JLabel();
         Nivel.setForeground(Color.BLACK);
         Nivel.setFont(fuente);
-        Nivel.setBounds(500,180,250,100);
+        Nivel.setBounds(480,180,250,100);
         panelGrafico.add(Nivel);
         
         
@@ -141,8 +146,14 @@ public class Easy_Math extends JFrame implements ActionListener
         
         if(evento.getSource() == botonReIniciar)
         {
+            restart = new Ecuaciones();
+            restart.reiniciar_valores();
+            
             panelGrafico.error(0);
             Ecuacion.setText("");
+            
+            botonIniciar.setText("Iniciar Juego");
+            Nivel.setText("");
             vidas = 0;
         }
         
@@ -150,25 +161,38 @@ public class Easy_Math extends JFrame implements ActionListener
         
         else if(evento.getSource() == botonIniciar)
         {
+            
             panelGrafico.error(0);
             e = new Ecuaciones();
-            String aux = e.escogerPalabra();
-            
+            String aux = e.escogerEcuacion();
             Ecuacion.setText(aux);
+            
+        
+            n= new Nivel();
+            int niv = n.Nivel();
+            Nivel.setText(" Nivel " + niv);
+            
+            botonIniciar.setText("Siguiente");
+          
+           
         }
         else if(evento.getSource() == botonValidarValor)
         {
-            int p = 5;
+           
+            r = new Ecuaciones();
+            double res = r.resultado();
+            
             int vidas = 3;
             String valor_insertado = numero_ingresado.getText();
-            int valor_comparar = Integer.parseInt(valor_insertado);;
-            if(valor_comparar==5){
+            double valor_comparar = Double.parseDouble(valor_insertado);
+            if(valor_comparar==res){
                 JOptionPane.showMessageDialog(null,"Ganaste");
+                
             }
             else {
-                
-            JOptionPane.showMessageDialog(null,"perdiste");
-        }
+                vidas = vidas -1;
+            JOptionPane.showMessageDialog(null,"El valor ingresado no es correcto te quedan  "+ vidas+"  vidas");
+           }
             
         }
         
