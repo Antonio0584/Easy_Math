@@ -1,4 +1,3 @@
-
 package easy_math;
 
 /**
@@ -8,7 +7,7 @@ package easy_math;
 public class Nivel {
     
     private Ecuaciones Nivel_actual;
-    
+    // metodo que realiza un llamado a la clase ecuaciones y a su metodo Contador para incrementar el nivel del juego 
         public int Nivel()
         {
         Nivel_actual = new Ecuaciones();

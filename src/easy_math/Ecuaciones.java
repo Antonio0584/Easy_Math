@@ -5,20 +5,20 @@ package easy_math;
  * @author losal
  */
 public class Ecuaciones {
+    
+    // Creacion  de el arreglo donde se guardaran los resultados
     private double[] resultados={2,4,7,5,5,4,15,24,47.2234,2.3875};
+    
+    // Creacion del arreglo donde se guardaran las ecuaciones
     private String[] arreglo;
     public String elegida;
-    private String[] ecuacionFormada;
     int orden= 0;
-    int i =0;
-    int resultado_ecuacion1= 2;
-    boolean result1;
     static int cont = -1;
     //Creacion de un arreglo para almacenar las ecuaciones
     
      public Ecuaciones()
     {
-      
+      // asignacion de las ecuaciones para cada posicion del arreglo
         arreglo = new String[10];
   
         arreglo[0] = "18X + 20 = 56";
@@ -38,7 +38,7 @@ public class Ecuaciones {
 
 
 
-// Metodo para tomar aleatoriamente una posicion del arreglo
+// Metodo para tomar ordenadamente una posicion del arreglo y retornarla
       public String escogerEcuacion()
     {
         cont= cont+1;
@@ -48,7 +48,7 @@ public class Ecuaciones {
            
           
          
-        
+        // metodo para que el nivel cuente al mismo tiempo que la ecuacion
         public int Contador(){
               
         
@@ -56,6 +56,7 @@ public class Ecuaciones {
             
         }
         
+        // Metodo para tomar ordenadamente una posicion del arreglo resultados y retornarla
         public double resultado(){
             
             
@@ -64,7 +65,7 @@ public class Ecuaciones {
         
             
         }
-        
+        // metodo para reiniciar todos los valores a su posicion inicial
         public void reiniciar_valores(){
             cont=-1;
             
@@ -72,6 +73,4 @@ public class Ecuaciones {
            
           
 }
-
-
 
